@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="refresh" content="70;url=images.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
+      background-size: 400% 400%;
+      animation: gradientBG 20s ease infinite;
+       overflow-x: hidden;
+       overflow-y: auto;
+      color: #fff;
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 8% auto;
+      padding: 2rem;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 1.5rem;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
+      text-align: center;
+      position: relative;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #ffe6f0;
+      text-shadow: 1px 1px 5px #ff91a4;
+      margin-bottom: 1rem;
+    }
+
+    #messageText {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: #ffffff;
+      white-space: pre-wrap;
+      text-align: left;
+      margin-top: 1rem;
+      animation: fadeIn 1s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .star, .moon {
+      position: absolute;
+      opacity: 0.25;
+      animation: fall linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .star {
+      width: 5px;
+      height: 5px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 6px white;
+    }
+
+    .moon {
+      width: 14px;
+      height: 14px;
+      background: transparent;
+      border-radius: 50%;
+      box-shadow: -4px 0 0 0 #ffe4c4;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.4;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+  
+</head>
+<body>
+  <canvas id="bgCanvas"></canvas>
+  <audio autoplay loop>
+    <source src="Timro Pratiksa.mp3" type="audio/mpeg">
+  </audio>
+
+  
+  <script>
+    const count = 80;
+    for (let i = 0; i < count; i++) {
+      const el = document.createElement('div');
+      const type = Math.random() > 0.8 ? 'moon' : 'star';
+      el.className = type;
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.top = Math.random() * -100 + 'vh';
+      el.style.animationDuration = (6 + Math.random() * 8) + 's';
+      el.style.animationDelay = (Math.random() * 10) + 's';
+      document.body.appendChild(el);
+    }
+  </script>
+
+  <div class="container">
+    <h1>For You 💌</h1>
+    <div id="messageText"></div>
+  </div>
+  <script>
+    const text2 =`
+                                                    you walked in like sunlight
+                                                      quiet, warm, and bright,
+                                                       and suddenly, my world
+                                                 was no longer just black and white.
+
+                                                    you turned the noise into music,
+                                                         the chaos into peace,
+                                                          every hug from you
+                                                      feels like a soul’s release.
+
+                                                        your smile is my morning,
+                                                     your laugh, my favorite sound,
+                                                         i was lost in the dark
+                                                      and somehow, you were found.
+
+                                                          you don’t just love,
+                                                                you heal,
+                                                          you don’t just stay,
+                                                                you feel.
+
+                                                        you have seen every crack
+                                                            and called it art,
+                                                        you have held every ache
+                                                      like it was part of your heart.
+
+                                                      i don’t need a thousand wishes,
+                                                          i just need you near
+                                                            my love, my calm,
+                                                           my reason, my dear.
+
+                                                       you are the poem i will write
+                                                          for the rest of my days,
+                                                         and i will love you forever
+                                                          in a million quiet ways.`
+
+        const container1 = document.getElementById("messageText");
+    let idx1 = 0;
+
+    function type() {
+      if (idx1 < text2.length) {
+        container1.innerHTML += text2[idx1];
+        idx1++;
+        setTimeout(type, 25); 
+      }
+    }
+    window.onload = type;
+  </script>
+
+</body>
+</html>
