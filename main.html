@@ -1,11 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="70;url=hi.html">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
   <title>Happy Girlfriend's Day</title>
-  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       margin: 0;
@@ -14,8 +11,7 @@
       background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
       background-size: 400% 400%;
       animation: gradientBG 20s ease infinite;
-       overflow-x: hidden;
-       overflow-y: auto;
+      overflow: hidden;
       color: #fff;
     }
 
@@ -98,15 +94,15 @@
       }
     }
   </style>
-  
 </head>
 <body>
-  <canvas id="bgCanvas"></canvas>
+
+  
   <audio autoplay loop>
-    <source src="Timro Pratiksa.mp3" type="audio/mpeg">
+    <source src="Timro Pratiksha.mp3" type="audio/mpeg">
   </audio>
 
-
+  <!-- Falling stars and moons -->
   <script>
     const count = 80;
     for (let i = 0; i < count; i++) {
@@ -121,11 +117,13 @@
     }
   </script>
 
+  
   <div class="container">
-    <h1>Happy Girlfriend’s Day, Baby ❤️</h1>
+    <h1>Happy Girlfriend’s Day, Baby</h1>
     <div id="messageText"></div>
   </div>
 
+  
   <script>
     const text = 
 `happy girlfriend’s day, baby.     
@@ -141,7 +139,8 @@
  thank you for being mine, for loving me the way you do, and for being the most beautiful part of my story.
  you are everything, baby. absolutely everything.
  i love you.
- forever and always.`
+ forever and always.`;
+
     const container = document.getElementById("messageText");
     let idx = 0;
 
@@ -154,5 +153,7 @@
     }
 
     window.onload = type;
+  </script>
 </body>
 </html>
+
