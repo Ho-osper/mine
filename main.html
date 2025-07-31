@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="refresh" content="25;url=end.html">
+  <meta http-equiv="refresh" content="70;url=hi.html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Happy Girlfriend's Day</title>
   <link rel="stylesheet" href="style.css" />
@@ -11,119 +11,148 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', sans-serif;
-      color: #fff;
-      background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #fbc2eb, #a6c1ee);
+      background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1e3c72);
       background-size: 400% 400%;
-      animation: gradientBG 15s ease infinite;
+      animation: gradientBG 20s ease infinite;
+       overflow-x: hidden;
+       overflow-y: auto;
+      color: #fff;
     }
 
     @keyframes gradientBG {
-      0% {background-position: 0% 50%;}
-      50% {background-position: 100% 50%;}
-      100% {background-position: 0% 50%;}
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     .container {
       max-width: 800px;
-      margin: 5% auto;
+      margin: 8% auto;
       padding: 2rem;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.08);
       border-radius: 1.5rem;
-      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
       backdrop-filter: blur(12px);
+      box-shadow: 0 0 25px rgba(255, 255, 255, 0.3);
       text-align: center;
+      position: relative;
+      z-index: 10;
     }
 
     h1 {
       font-size: 2.5rem;
-      margin-bottom: 1rem;
       color: #ffe6f0;
       text-shadow: 1px 1px 5px #ff91a4;
+      margin-bottom: 1rem;
     }
 
-    p {
+    #messageText {
       font-size: 1.2rem;
       line-height: 1.7;
-      color: #fff;
-    }
-    
-    .fade-in {
-      animation: fadeIn 2s ease;
+      color: #ffffff;
+      white-space: pre-wrap;
+      text-align: left;
+      margin-top: 1rem;
+      animation: fadeIn 1s ease forwards;
     }
 
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
-  </style>
 
+    .star, .moon {
+      position: absolute;
+      opacity: 0.25;
+      animation: fall linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .star {
+      width: 5px;
+      height: 5px;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0 6px white;
+    }
+
+    .moon {
+      width: 14px;
+      height: 14px;
+      background: transparent;
+      border-radius: 50%;
+      box-shadow: -4px 0 0 0 #ffe4c4;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(-10vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.4;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
   
 </head>
 <body>
-<audio autoplay loop>
-  <source src="Timro Pratiksa.mp3" type="audio/mpeg">
-  Your browser does not support the audio tag.
-</audio>
+  <canvas id="bgCanvas"></canvas>
+  <audio autoplay loop>
+    <source src="Timro Pratiksa.mp3" type="audio/mpeg">
+  </audio>
+
+
+  <script>
+    const count = 80;
+    for (let i = 0; i < count; i++) {
+      const el = document.createElement('div');
+      const type = Math.random() > 0.8 ? 'moon' : 'star';
+      el.className = type;
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.top = Math.random() * -100 + 'vh';
+      el.style.animationDuration = (6 + Math.random() * 8) + 's';
+      el.style.animationDelay = (Math.random() * 10) + 's';
+      document.body.appendChild(el);
+    }
+  </script>
 
   <div class="container">
     <h1>Happy Girlfriend’s Day, Baby ❤️</h1>
-
-    <p class="message">
-      happy girlfriend’s day, baby.<br>
-      i honestly don’t even know where to begin because words will always fall short when it comes to you.<br>
-every single day with you feels like a gift i never knew i deserved.
-you make my world brighter, my heart lighter, and my life so damn beautiful.<br>
-there’s something about the way you laugh, the way you care, the way you love so deeply it just melts me.<br>
-you turn the smallest moments into magic.<br>
-when i am with you, i feel at home. like everything finally makes sense.
-you have held my hand through storms and danced with me in the sunshine, and i will never stop being grateful for you.
-you make me want to be better, love harder, and never take a second for granted.<br>
-i don’t know what i did to deserve you, but i swear i will spend my whole life making sure you feel loved, safe, and adored.
-thank you for being mine, for loving me the way you do, and for being the most beautiful part of my story.<br>
-you are everything, baby. absolutely everything.<br>
-i love you.<br> forever and always.<br>
-    </p>
-
-    <div class="poem">
-      <h2>For You 💌</h2>
-      <p>
-       you walked in like sunlight<br>
-       quiet, warm, and bright,<br>
-       and suddenly, my world<br>
-       was no longer just black and white.<br><br>
-       you turned the noise into music,<br>
-       the chaos into peace,<br>
-       every hug from you<br>
-       feels like a soul’s release.<br><br>
-        your smile is my morning,<br>
-        your laugh, my favorite sound,<br>
-        i was lost in the dark<br>
-        and somehow, you were found.<br><br>
-        you don’t just love,<br>
-        you heal,<br>
-        you don’t just stay,<br>
-        you feel.<br><br>
-        you have seen every crack<br>
-        and called it art,<br>
-        you have held every ache<br>
-        like it was part of your heart.<br><br>
-        i don’t need a thousand wishes,<br>
-        i just need you near<br>
-        my love, my calm,<br>
-        my reason, my dear.<br><br>
-        you are the poem i will write<br>
-        for the rest of my days,<br>
-        and i will love you forever<br>
-        in a million quiet ways.
-      </p>
-    </div>
-
-    <div class="slideshow">
-      <img src="photo1.jpg" id="slideshow-img" alt="Us" />
-    </div>
-    
+    <div id="messageText"></div>
   </div>
 
-<script src="script.js"></script>
+  <script>
+    const text = 
+`happy girlfriend’s day, baby.     
+ i honestly don’t even know where to begin because words will always fall short when it comes to you.
+ every single day with you feels like a gift i never knew i deserved.
+ you make my world brighter, my heart lighter, and my life so damn beautiful.
+ there’s something about the way you laugh, the way you care, the way you love so deeply it just melts me.
+ you turn the smallest moments into magic.
+ when i am with you, i feel at home. like everything finally makes sense.
+ you have held my hand through storms and danced with me in the sunshine, and i will never stop being grateful for you.
+ you make me want to be better, love harder, and never take a second for granted.
+ i don’t know what i did to deserve you, but i swear i will spend my whole life making sure you feel loved, safe, and adored.
+ thank you for being mine, for loving me the way you do, and for being the most beautiful part of my story.
+ you are everything, baby. absolutely everything.
+ i love you.
+ forever and always.`
+    const container = document.getElementById("messageText");
+    let idx = 0;
+
+    function type() {
+      if (idx < text.length) {
+        container.innerHTML += text[idx];
+        idx++;
+        setTimeout(type, 25); 
+      }
+    }
+
+    window.onload = type;
 </body>
 </html>
