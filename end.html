@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Falling Hearts</title>
+  <meta http-equiv="refresh" content="10;url=index.html">
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: #fff0f5;
+    }
+
+    canvas {
+      display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
+    #message {
+      position: absolute;
+      top: 40%;
+      width: 100%;
+      text-align: center;
+      font-size: 2.8rem;
+      font-weight: bold;
+      color: 	#ff3b3f;
+      text-shadow: 0 0 15px rgba(255, 105, 180, 0.8);
+      font-family: 'Segoe UI', sans-serif;
+      z-index: 1;
+      opacity: 0;
+      animation: fadeSlideIn 2.5s ease-in-out forwards;
+    }
+
+    @keyframes fadeSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(-50px);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+
+<audio autoplay loop>
+  <source src="Timro Pratiksa.mp3" type="audio/mpeg">
+  Your browser does not support the audio tag.
+</audio>
+
+
+<canvas id="heartCanvas"></canvas>
+
+<script>
+  const canvas = document.getElementById("heartCanvas");
+  const ctx = canvas.getContext("2d");
+
+  let w = canvas.width = window.innerWidth;
+  let h = canvas.height = window.innerHeight;
+
+  const hearts = [];
+
+  class Heart {
+    constructor() {
+      this.reset(true);
+    }
+
+    reset(initial = false) {
+      this.x = Math.random() * w;
+      this.y = initial ? Math.random() * h : -10;
+      this.size = Math.random() * 20 + 10;
+      this.speedY = Math.random() * 2 + 2;
+      this.alpha = Math.random() * 0.5 + 0.5;
+    }
+
+    draw() {
+      ctx.save();
+      ctx.translate(this.x, this.y);
+      ctx.scale(this.size / 8, this.size / 8);
+
+      // Shadow/Glow
+      ctx.shadowColor = "rgba(255, 105, 180, 0.6)";
+      ctx.shadowBlur = 10;
+
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.bezierCurveTo(0, -3, -5, -3, -5, 0);
+      ctx.bezierCurveTo(-5, 3, 0, 5, 0, 8);
+      ctx.bezierCurveTo(0, 5, 5, 3, 5, 0);
+      ctx.bezierCurveTo(5, -3, 0, -3, 0, 0);
+      ctx.fillStyle = `rgba(255, 105, 180, ${this.alpha})`;
+      ctx.fill();
+      ctx.restore();
+    }
+
+    update() {
+      this.y += this.speedY;
+      if (this.y > h + 10) {
+        this.y = -10;
+        this.x = Math.random() * w;
+      }
+    }
+  }
+
+  function createHearts(count) {
+    for (let i = 0; i < count; i++) {
+      hearts.push(new Heart());
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, w, h);
+    for (let heart of hearts) {
+      heart.update();
+      heart.draw();
+    }
+    requestAnimationFrame(animate);
+  }
+
+  window.addEventListener("resize", () => {
+    w = canvas.width = window.innerWidth;
+    h = canvas.height = window.innerHeight;
+  });
+
+  createHearts(200);
+  animate();
+</script>
+</body>
+</html>
